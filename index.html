@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bernadus Wisnu — Portofolio & CV</title>
+  <meta name="description" content="Portofolio & CV Bernadus Wisnu — Frontend Developer (HTML, CSS, JS, Laravel) | Admin Keuangan" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#ffffff;
+      --accent:#0ea5e9;
+      --accent-600:#0284c7;
+      --muted:#6b7280;
+      --text:#0f172a;
+      --card:#ffffff;
+      --glass: rgba(255,255,255,0.7);
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      line-height:1.45;
+      scroll-behavior:smooth;
+    }
+
+    /* layout */
+    .wrap{max-width:1100px;margin:0 auto;padding:28px}
+    header{position:sticky;top:0;backdrop-filter:blur(6px);background:linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.5));z-index:40;border-bottom:1px solid rgba(15,23,42,0.04)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:10px;overflow:hidden;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
+    .logo img{width:100%;height:100%;object-fit:cover}
+    .brand h1{margin:0;font-size:16px}
+    nav ul{display:flex;gap:10px;align-items:center;margin:0;padding:0;list-style:none}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:600;font-size:14px;position:relative}
+    nav a:hover{color:var(--accent-600);background:rgba(14,165,233,0.06)}
+    .nav-cta{display:flex;gap:8px;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;box-shadow:0 8px 30px rgba(14,165,233,0.14)}
+    .btn.outline{background:transparent;border:1px solid var(--accent);color:var(--accent);box-shadow:none;font-weight:700}
+
+    /* aktif nav */
+    nav a.active {
+      color: var(--accent-600);
+      background: rgba(14,165,233,0.12);
+      transition: all 0.3s ease;
+    }
+    nav a.active::after {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      left: 10px;
+      right: 10px;
+      height: 2px;
+      background: var(--accent-600);
+      border-radius: 2px;
+    }
+
+    /* bg wave */
+    .bg-wave{position:fixed;inset:-20% -30% auto -30%;width:160%;height:60vh;transform:rotate(-14deg);z-index:-10;pointer-events:none;opacity:0.95}
+
+    /* hero */
+    .hero{display:flex;gap:28px;align-items:center;margin-top:18px;flex-wrap:wrap}
+    .hero-left{flex:1 1 420px;min-width:260px}
+    .hero-right{width:300px;flex-shrink:0}
+    .avatar{width:140px;height:140px;border-radius:20px;overflow:hidden;box-shadow:0 16px 40px rgba(2,6,23,0.12)}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    h2{margin:0;font-size:28px}
+    .subtitle{color:var(--accent);font-weight:700;margin-top:6px}
+    .meta{margin-top:12px;color:var(--muted);font-size:15px}
+    .contact-inline{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+    .chip{padding:8px 10px;border-radius:999px;border:1px dashed rgba(15,23,42,0.06);font-weight:600;color:var(--muted);background:#fff}
+    .actions{margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+
+    /* grid */
+    .grid{display:grid;gap:18px;margin-top:26px}
+    @media(min-width:860px){ .grid{grid-template-columns:1fr 420px} }
+
+    .card{background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:0 8px 30px rgba(2,6,23,0.06)}
+    h3{margin:0 0 8px 0;font-size:18px}
+    p.small{margin:0;color:var(--muted);font-size:14px}
+
+    /* experience */
+    .exp{display:flex;flex-direction:column;gap:12px}
+    .exp-item{padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(2,6,23,0.02), rgba(255,255,255,0.0));border:1px solid rgba(15,23,42,0.03)}
+    .role{font-weight:700}
+    .period{color:var(--muted);font-size:13px;margin-top:6px}
+
+    /* skills */
+    .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .skill{background:rgba(14,165,233,0.08);color:var(--accent-600);padding:8px 10px;border-radius:999px;font-weight:700;font-size:13px}
+
+    /* portfolio */
+    .project{display:flex;gap:12px;align-items:center}
+    .project img{width:92px;height:64px;border-radius:8px;object-fit:cover}
+
+    /* footer */
+    footer{margin-top:28px;padding:16px 0;text-align:center;color:var(--muted);font-size:14px}
+
+    /* animations */
+    .reveal{opacity:0;transform:translateY(18px);transition:all 600ms cubic-bezier(.2,.9,.2,1)}
+    .reveal.show{opacity:1;transform:none}
+
+    /* responsive */
+    @media(max-width:520px){
+      .nav a{display:none}
+      .nav-cta .outline{display:none}
+    }
+
+    /* print */
+    @media print{
+      header, .btn, .nav-cta {display:none}
+      .bg-wave {display:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- background wave -->
+  <svg class="bg-wave" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="g" x1="0" x2="1">
+        <stop offset="0" stop-color="#0ea5e9" stop-opacity="0.18"/>
+        <stop offset="1" stop-color="#0284c7" stop-opacity="0.06"/>
+      </linearGradient>
+    </defs>
+    <path fill="url(#g)" d="M0,160L48,186.7C96,213,192,267,288,256C384,245,480,171,576,165.3C672,160,768,224,864,240C960,256,1056,224,1152,197.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L0,320Z"></path>
+  </svg>
+
+  <div class="wrap">
+    <!-- HEADER -->
+    <header>
+      <div class="nav">
+        <div class="brand">
+          <div class="logo">
+            <img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=crop&w=600&q=60" alt="Foto Bernadus Wisnu">
+          </div>
+          <div>
+            <h1>Bernadus Wisnu</h1>
+            <div style="color:var(--muted);font-size:13px">SMK N 1 Bantul — RPL</div>
+          </div>
+        </div>
+        <nav aria-label="Main navigation">
+          <ul>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#experience">Pengalaman</a></li>
+            <li><a href="#portfolio">Portofolio</a></li>
+            <li><a href="#skills">Keahlian</a></li>
+            <li><a href="#contact">Kontak</a></li>
+          </ul>
+        </nav>
+        <div class="nav-cta">
+          <a class="btn outline" href="#contact">Kontak</a>
+          <a class="btn" href="/cv.pdf" download>⬇️ Download CV</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-left reveal">
+        <div class="avatar">
+          <img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=crop&w=600&q=60" alt="Foto Profil Bernadus Wisnu">
+        </div>
+        <h2 style="margin-top:12px">Bernadus Wisnu</h2>
+        <div class="subtitle">Frontend Developer • UI/UX Enthusiast • Admin Keuangan</div>
+        <p class="meta">
+          Fresh graduate RPL (SMK N 1 Bantul). Pengalaman PKL membangun website perusahaan menggunakan Laravel & frontend stack, dan saat ini bekerja sebagai Admin Keuangan & Operasional di Revalina Masker. Aktif belajar web development & trading.
+        </p>
+        <div class="contact-inline">
+          <div class="chip">📍 Jakarta, Indonesia</div>
+          <div class="chip">✉️ <a href="mailto:bernaduswisnu1@gmail.com" style="color:inherit;text-decoration:none">bernaduswisnu1@gmail.com</a></div>
+          <div class="chip">📞 <a href="tel:+6285876092235" style="color:inherit;text-decoration:none">+62 858-7609-2235</a></div>
+        </div>
+        <div class="actions">
+          <a class="btn" href="/cv.pdf" download>⬇️ Download CV (PDF)</a>
+          <a class="btn outline" href="https://wa.me/6285876092235" target="_blank" rel="noopener">💬 WhatsApp</a>
+          <a class="btn outline" href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener">🔗 LinkedIn</a>
+          <a class="btn outline" href="https://github.com/your-github" target="_blank" rel="noopener">🐙 GitHub</a>
+        </div>
+      </div>
+      <aside class="hero-right reveal">
+        <div class="card">
+          <h3>Highlight Singkat</h3>
+          <p class="small">PKL Webane (Laravel & Frontend) • Admin Keuangan @Revalina Masker • Proyek: Web Toko untuk usaha keluarga (ongoing).</p>
+          <hr style="margin:12px 0;border:none;height:1px;background:#f1f5f9;border-radius:2px">
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <div style="font-weight:700;color:var(--muted);font-size:13px">TOEFL</div>
+            <div style="background:#f3f4f6;padding:6px 10px;border-radius:8px;font-weight:700">483</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- MAIN GRID -->
+    <section class="grid">
+      <div>
+        <!-- ABOUT -->
+        <div id="about" class="card reveal">
+          <h3>Tentang Saya</h3>
+          <p class="small">
+            Saya Bernadus, lulusan SMK N 1 Bantul jurusan RPL (2022). Saya tertarik pada pengembangan web front-end, UI/UX dasar, serta manajemen operasional & keuangan. Saat ini saya bekerja sebagai Admin Keuangan & Operasional dan sedang mengerjakan project web toko untuk usaha keluarga menggunakan HTML, CSS, dan JavaScript.
+          </p>
+        </div>
+
+        <!-- PORTFOLIO -->
+        <div id="portfolio" class="card reveal" style="margin-top:16px">
+          <h3>Portofolio / Project</h3>
+          <div class="project" style="margin-top:10px">
+            <img src="https://images.unsplash.com/photo-1522199710521-72d69614c702?auto=format&fit=crop&w=600&q=60" alt="Project thumbnail">
+            <div>
+              <div style="font-weight:800">Website Toko (Sedang dibuat)</div>
+              <p class="small">Sedang mengembangkan website toko untuk ayah saya. Teknologi: HTML, CSS, JavaScript. Tujuan: memudahkan penjualan & manajemen stok secara sederhana.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <!-- EXPERIENCE -->
+        <div id="experience" class="card reveal">
+          <h3>Pengalaman Kerja</h3>
+          <div class="exp" style="margin-top:12px">
+            <div class="exp-item">
+              <div class="role">Admin Keuangan & Operasional — Revalina Masker</div>
+              <div class="period">2022 — Sekarang</div>
+              <div class="small">Mengelola seluruh keuangan & pencatatan 3 toko, keluar-masuk barang, laporan bulanan, serta keuangan pribadi bos.</div>
+            </div>
+            <div class="exp-item">
+              <div class="role">Bartender — Clueless Cafe</div>
+              <div class="period">2022 (8 bulan)</div>
+              <div class="small">Melayani pelanggan, menjaga stok & kebersihan, kerja shift.</div>
+            </div>
+            <div class="exp-item">
+              <div class="role">Web Developer Intern (PKL) — Webane</div>
+              <div class="period">2021 (3 bulan)</div>
+              <div class="small">Membangun & memelihara website perusahaan menggunakan Laravel, HTML, CSS, dan JavaScript; membantu debugging & testing.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SKILLS -->
+        <div id="skills" class="card reveal" style="margin-top:16px">
+          <h3>Keahlian</h3>
+          <div class="skills">
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">Laravel (dasar)</div>
+            <div class="skill">UI/UX (dasar)</div>
+            <div class="skill">Manajemen Keuangan</div>
+            <div class="skill">Analisis Pasar (Crypto/Forex)</div>
+          </div>
+          <div style="margin-top:12px">
+            <div style="font-weight:700;margin-bottom:6px">Pengalaman Sampingan</div>
+            <p class="small">• Crypto investor (2017 — sekarang) — investasi & analisis jangka panjang.</p>
+            <p class="small">• Forex trader (2019 — sekarang) — trading & manajemen risiko (sedang mendalami strategi).</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="card reveal" style="margin-top:20px">
+      <h3>Kontak</h3>
+      <p class="small">Tertarik bekerja sama? Klik tombol di bawah untuk menghubungi saya langsung.</p>
+      <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+        <a class="btn" href="mailto:bernaduswisnu1@gmail.com">✉️ Email</a>
+        <a class="btn outline" href="https://wa.me/6285876092235" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a class="btn outline" href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noopener">🔗 LinkedIn</a>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Bernadus Wisnu — Portofolio & CV
+    </footer>
+  </div>
+
+  <script>
+    // tahun otomatis
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // animasi reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+
+    // nav highlight 
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll("nav a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
