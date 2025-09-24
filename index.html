@@ -128,18 +128,23 @@
   cursor: pointer;
 }
 
-/* Responsive navbar */
+/* nav biar jadi parent dari dropdown */
+nav {
+  position: relative;
+}
+
 @media (max-width: 768px) {
   nav ul {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 60px;
-    right: 20px;
+    top: 50px; /* jarak dari atas */
+    right: 0;
     background: #fff;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    z-index: 1000; /* biar ga ketiban */
   }
 
   nav ul.show {
@@ -148,8 +153,11 @@
 
   .menu-toggle {
     display: block;
+    cursor: pointer;
+    z-index: 1100; /* lebih tinggi dari dropdown */
   }
 }
+
 
   </style>
 </head>
