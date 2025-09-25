@@ -96,8 +96,9 @@
     .skill{background:rgba(14,165,233,0.08);color:var(--accent-600);padding:8px 10px;border-radius:999px;font-weight:700;font-size:13px}
 
     /* portfolio */
-    .project{display:flex;gap:12px;align-items:center}
-    .project img{width:92px;height:64px;border-radius:8px;object-fit:cover}
+    .project{display:flex;gap:15px;align-items:center;flex-direction:column;margin-bottom:20px;}
+    .project img{width:150px;height:auto;border-radius:8px;object-fit:cover}
+    .project text{max-width: 500px;}
 
     /* footer */
     footer{margin-top:28px;padding:16px 0;text-align:center;color:var(--muted);font-size:14px}
@@ -249,6 +250,11 @@ nav {
         <div id="portfolio" class="card reveal" style="margin-top:16px">
           <h3>Portofolio / Project</h3>
           <div class="project" style="margin-top:10px">
+            <img src="https://images.unsplash.com/photo-1522199710521-72d69614c702?auto=format&fit=crop&w=600&q=60" alt="Project thumbnail">
+            <div>
+              <div style="font-weight:800">Website Toko (Currently being developed)</div>
+              <p class="small">Currently developing an online store website for my father’s business using HTML, CSS, and JavaScript. The goal is to simplify sales and inventory management in an easy to use way.</p>
+            </div>
             <img src="https://images.unsplash.com/photo-1522199710521-72d69614c702?auto=format&fit=crop&w=600&q=60" alt="Project thumbnail">
             <div>
               <div style="font-weight:800">Website Toko (Currently being developed)</div>
